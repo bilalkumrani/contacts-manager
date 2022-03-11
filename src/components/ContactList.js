@@ -11,6 +11,7 @@ const ContactList = (props) => {
               email={item.email}
               index={index}
               key={index}
+              deleteHandler={props.deleteHandler}
             />
           );
         })}

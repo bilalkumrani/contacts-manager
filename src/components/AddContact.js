@@ -11,6 +11,7 @@ const AddContact = (props) => {
       <FormControl
         className="mb-2 w-50"
         name="name"
+        value={name}
         onChange={(e) => {
           setName(e.target.value);
         }}
@@ -22,13 +23,18 @@ const AddContact = (props) => {
       <FormControl
         className="w-50 mb-2"
         name="email"
+        value={email}
         onChange={(e) => {
           setEmail(e.target.value);
         }}
       />
       <Button
         onClick={() => {
-          props.addContact(name, email);
+          if (name && email) {
+            props.addContact(name, email);
+          }
+          setEmail("");
+          setName("");
         }}
       >
         Add Contact
