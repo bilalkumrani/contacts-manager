@@ -1,9 +1,9 @@
 import "./App.css";
 import Header from "./Header";
 import AddContact from "./AddContact";
-import { Container } from "react-bootstrap";
 import ContactList from "./ContactList";
 import { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   const LOCAL_STORAGE_KEY = "contacts";
@@ -30,11 +30,23 @@ function App() {
 
   return (
     <>
-      <Header />
-      <Container className="w-50">
-        <AddContact addContact={addContact} />
-        <ContactList state={contacts} deleteHandler={deleteHandler} />
-      </Container>
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route
+            exact
+            path="/"
+            element={
+              <ContactList state={contacts} deleteHandler={deleteHandler} />
+            }
+          />
+          <Route
+            exact
+            path="/add"
+            element={<AddContact addContact={addContact} />}
+          />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }

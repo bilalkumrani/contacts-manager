@@ -1,5 +1,6 @@
 import { FormControl, Button } from "react-bootstrap";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const AddContact = (props) => {
   const [name, setName] = useState("");
@@ -7,6 +8,10 @@ const AddContact = (props) => {
 
   return (
     <>
+      <h1 className="mb-5">Add Contact</h1>
+      <Link to="/">
+        <Button className="d-block mb-5">Contacts List</Button>
+      </Link>
       <label htmlFor="name">Name</label>
       <FormControl
         className="mb-2 w-50"
